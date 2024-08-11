@@ -1,0 +1,37 @@
+<div id="carouselExampleIndicators"
+  class="container card carousel slide justify-content-center align-items-center"
+  data-ride="carousel" style="margin-top: 10rem;">
+  <ol class="carousel-indicators">
+    <li *ngFor="let review of reviews; let i = index"
+      [attr.data-target]="'#carouselExampleIndicators'"
+      [attr.data-slide-to]="i"
+      [class.active]="i === currentReviewIndex"></li>
+  </ol>
+  <div class="carousel-inner position-relative">
+    <div *ngFor="let review of reviews; let i = index" class="carousel-item"
+      [class.active]="i === currentReviewIndex">
+      <div>
+        <img [src]="review.image" alt="..." class="image align-items-center">
+        <div class="card-content">
+          <div class="card-text">
+            <h5 class="text-center">{{ review.name }}</h5>
+            <h6 class="text-center">{{ review.title }}</h6>
+            <p>{{ review.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev position-absolute"
+    style="top: 50%; transform: translateY(-50%);" role="button"
+    (click)="fetchPrevious()">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+
+  </a>
+  <a class="carousel-control-next position-absolute"
+    style="top: 50%; right: 0; transform: translateY(-50%);" role="button"
+    (click)="fetchNext()">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+
+  </a>
+</div>
